@@ -1,8 +1,7 @@
 import './style.css';
-import { Go } from './wasm_exec';
 
 async function loadWasm() {
-    const go = new Go();
+    const go = new (window as any).Go();
     const result = await WebAssembly.instantiateStreaming(fetch("/animal.wasm"), go.importObject);
     go.run(result.instance);
     console.log("WASM Loaded!");
