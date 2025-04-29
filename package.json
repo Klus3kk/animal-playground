@@ -6,9 +6,15 @@
     "build": "vite build",
     "preview": "vite preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@codemirror/lang-javascript": "^6.2.3",
+    "@codemirror/state": "^6.5.2",
+    "@codemirror/theme-one-dark": "^6.1.2",
+    "@codemirror/view": "^6.36.6",
+    "codemirror": "^6.0.1"
+  },
   "devDependencies": {
-    "vite": "^4.4.9",
-    "typescript": "^5.2.2"
+    "typescript": "^5.2.2",
+    "vite": "^6.3.3"
   }
 }

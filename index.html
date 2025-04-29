@@ -1,18 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Animal Playground</title>
-    <link rel="stylesheet" href="/src/style.css">
+  <meta charset="UTF-8" />
+  <title>Animal Playground</title>
+  <link rel="stylesheet" href="/src/style.css" />
 </head>
 <body>
-<h1>Animal Playground</h1>
-<textarea id="animalCode">roar "Hello World!"</textarea>
-<button onclick="runAnimal()">Run</button>
-<h2>Output:</h2>
-<pre id="output"></pre>
+  <nav class="navbar">
+    <div class="logo">Animal</div>
+    <div class="nav-links">
+      <a href="https://github.com/animal-lang" target="_blank">GitHub</a>
+      <a href="https://animal-lang.readthedocs.io" target="_blank">Docs</a>
+      <a href="https://animal-lang.github.io" target="_blank">Website</a>
+    </div>
+  </nav>
 
-<script src="/wasm_exec.js"></script>
-<script type="module" src="/src/main.ts"></script>
+  <div class="container">
+    <div class="panel" id="editorPanel">
+      <div class="button-group">
+        <button class="run-button" onclick="runAnimal()">Run</button>
+      </div>
+      <div id="animalCode"></div>
+    </div>
+
+    <div class="panel" id="outputPanel">
+      <div class="button-group">
+        <button class="clear-button" onclick="clearOutput()">Clear</button>
+      </div>
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <footer>Built by ClueSec 2025 — Animal Language Project</footer>
+
+  <script src="/src/wasm_exec.js"></script>
+  <script type="module" src="/src/main.ts"></script>
 </body>
 </html>

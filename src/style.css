@@ -1,23 +1,140 @@
-body {
-    font-family: sans-serif;
-    margin: 2rem;
-    background: #fafafa;
-}
-
-textarea {
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    min-height: 100vh;
+    background: linear-gradient(145deg, #1b1a1f, #312f39);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar {
     width: 100%;
-    height: 200px;
-    font-family: monospace;
-    margin-bottom: 1rem;
-}
-
-button {
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    font-size: 1rem;
-}
-
-pre {
-    background: #eee;
+    padding: 1rem 2rem;
+    background: rgba(20, 20, 30, 0.6);
+    backdrop-filter: blur(12px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  
+  .nav-links a {
+    margin-left: 2rem;
+    color: #ffffffcc;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  
+  .nav-links a:hover {
+    color: #8ec5fc;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    height: calc(100vh - 80px);
+    gap: 1rem;
     padding: 1rem;
-}
+    overflow: hidden;
+  }
+  
+  .panel {
+    flex: 1 1 50%;
+    display: flex;
+    flex-direction: column;
+    resize: horizontal;
+    overflow: auto;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    padding: 1rem;
+    border-radius: 0;
+    position: relative;
+    min-width: 300px;
+  }
+  
+  /* Button position */
+  .panel .button-group {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 0.5rem;
+    z-index: 1;
+  }
+  
+  /* CodeMirror parent container */
+  #animalCode {
+    flex-grow: 1;
+    min-height: 300px;
+  }
+  
+  /* CodeMirror itself */
+  .cm-editor {
+    background: rgba(255, 255, 255, 0.07);
+    height: 100%;
+    color: white;
+    font-size: 1rem;
+    font-family: monospace;
+  }
+  
+/* Output panel must also be flex column */
+#outputPanel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  /* This ensures the pre block fills space */
+  pre {
+    background: rgba(255, 255, 255, 0.07);
+    padding: 1rem;
+    color: #ddd;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    overflow: auto;
+    flex: 1;            /* allow growing */
+    min-height: 0;      /* allow shrinking */
+    border-radius: 0;   /* square corners */
+  }
+  
+  
+  /* Buttons */
+  button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg, #8ec5fc, #e0c3fc);
+    color: #1b1a1f;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+  
+  button:hover {
+    background: linear-gradient(90deg, #e0c3fc, #8ec5fc);
+    transform: scale(1.05);
+  }
+  
+  footer {
+    text-align: center;
+    padding: 1rem;
+    background: rgba(20, 20, 30, 0.6);
+    backdrop-filter: blur(12px);
+    font-size: 0.9rem;
+    color: #cccccc;
+  }
+  
