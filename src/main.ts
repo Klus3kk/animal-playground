@@ -42,14 +42,18 @@ async function loadWasm() {
   console.log("WASM Loaded");
 }
 
-(window as any).runAnimal = function () {
+(window as any).runAnimal = async function () {
   const code = editor.state.doc.toString();
   const output = document.getElementById("output")!;
   const runBtn = document.querySelector(".run-button") as HTMLButtonElement;
 
-  output.textContent = ""; // clear before running
-  runBtn.innerText = "Running...";
+  // Prevent re-entry
   runBtn.disabled = true;
+  runBtn.innerText = "Running...";
+  output.textContent = ''; // Clear first — always
+
+  // Small timeout gives DOM a chance to reflect the clear
+  await new Promise(resolve => setTimeout(resolve, 10));
 
   try {
     const result = (window as any).runAnimalCode(code);
@@ -61,6 +65,7 @@ async function loadWasm() {
   runBtn.innerText = "Run";
   runBtn.disabled = false;
 };
+
 
 (window as any).clearOutput = function () {
   const output = document.getElementById("output")!;
