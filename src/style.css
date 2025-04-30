@@ -74,7 +74,37 @@
     gap: 0.5rem;
     z-index: 1;
   }
-  
+
+  .file-label {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border-radius: 0.4rem;
+    background: linear-gradient(90deg, #8ec5fc, #e0c3fc);
+    color: #1b1a1f;
+    cursor: pointer;
+    transition: all 0.3s;
+  }
+
+  .file-label:hover {
+    background: linear-gradient(90deg, #e0c3fc, #8ec5fc);
+    transform: scale(1.05);
+  }
+
+  /* Hide native file input */
+  #fileInput {
+    display: none;
+  }
+  .button-group input[type="file"] {
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.6rem;
+    font-size: 0.8rem;
+    color: #fff;
+    border-radius: 0.4rem;
+    cursor: pointer;
+    max-width: 120px;
+  }
   /* CodeMirror parent container */
   #animalCode {
     flex-grow: 1;

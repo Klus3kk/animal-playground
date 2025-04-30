@@ -17,9 +17,12 @@
 
   <div class="container">
     <div class="panel" id="editorPanel">
-      <div class="button-group">
-        <button class="run-button" onclick="runAnimal()">Run</button>
-      </div>
+    <div class="button-group">
+      <button class="run-button" onclick="runAnimal()">Run</button>
+
+      <label for="fileInput" class="file-label">Upload</label>
+      <input type="file" id="fileInput" accept=".anml" />
+    </div>
       <div id="animalCode"></div>
     </div>
 

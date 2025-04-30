@@ -14,6 +14,24 @@ window.addEventListener('DOMContentLoaded', () => {
     parent: document.getElementById('animalCode')!
   });
 
+  const fileInput = document.getElementById("fileInput") as HTMLInputElement;
+  fileInput.addEventListener("change", () => {
+    const file = fileInput.files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const content = (reader.result as string)
+        .replace(/\r/g, '')
+        .replace(/\uFEFF/g, '')
+        .replace(/[^\x00-\x7F]/g, '');
+      editor.dispatch({
+        changes: { from: 0, to: editor.state.doc.length, insert: content }
+      });
+    };
+    reader.readAsText(file);
+  });
+
   loadWasm();
 });
 
@@ -25,26 +43,26 @@ async function loadWasm() {
 }
 
 (window as any).runAnimal = function () {
-    const code = editor.state.doc.toString();
-    const output = document.getElementById("output")!;
-    const runBtn = document.querySelector(".run-button") as HTMLButtonElement;
-  
-    runBtn.innerText = "Running...";
-    runBtn.disabled = true;
-  
-    try {
-      const result = (window as any).runAnimalCode(code);
-      output.textContent = result;
-    } catch (err) {
-      output.textContent = "Error: " + (err as Error).message;
-    }
-  
-    runBtn.innerText = "Run";
-    runBtn.disabled = false;
-  };
-  
-  (window as any).clearOutput = function () {
-    const output = document.getElementById("output")!;
-    output.textContent = '';
-  };
-  
+  const code = editor.state.doc.toString();
+  const output = document.getElementById("output")!;
+  const runBtn = document.querySelector(".run-button") as HTMLButtonElement;
+
+  output.textContent = ""; // clear before running
+  runBtn.innerText = "Running...";
+  runBtn.disabled = true;
+
+  try {
+    const result = (window as any).runAnimalCode(code);
+    output.textContent = result;
+  } catch (err) {
+    output.textContent = "Error: " + (err as Error).message;
+  }
+
+  runBtn.innerText = "Run";
+  runBtn.disabled = false;
+};
+
+(window as any).clearOutput = function () {
+  const output = document.getElementById("output")!;
+  output.textContent = '';
+};
