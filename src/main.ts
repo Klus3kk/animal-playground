@@ -37,7 +37,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 async function loadWasm() {
   const go = new (window as any).Go();
-  const result = await WebAssembly.instantiateStreaming(fetch("/animal.wasm"), go.importObject);
+  const result = await WebAssembly.instantiateStreaming(fetch("./animal.wasm"), go.importObject);
   await go.run(result.instance);
   console.log("WASM Loaded");
 }
