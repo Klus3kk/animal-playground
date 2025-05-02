@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Animal Playground</title>
+  <script type="module" crossorigin src="/assets/index-C906dbDG.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DBYIKvs0.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">Animal</div>
+    <div class="nav-links">
+      <a href="https://github.com/animal-lang" target="_blank">GitHub</a>
+      <a href="https://animal-lang.readthedocs.io" target="_blank">Docs</a>
+      <a href="https://animal-lang.github.io" target="_blank">Website</a>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="panel" id="editorPanel">
+    <div class="button-group">
+      <button class="run-button" onclick="runAnimal()">Run</button>
+
+      <label for="fileInput" class="file-label">Upload</label>
+      <input type="file" id="fileInput" accept=".anml" />
+    </div>
+      <div id="animalCode"></div>
+    </div>
+
+    <div class="panel" id="outputPanel">
+      <div class="button-group">
+        <button class="clear-button" onclick="clearOutput()">Clear</button>
+      </div>
+      <pre id="output"></pre>
+    </div>
+  </div>
+
+  <footer>Built by ClueSec 2025 — Animal Language Project</footer>
+
+  <script src="/src/wasm_exec.js"></script>
+</body>
+</html>
